@@ -1,4 +1,4 @@
-define(['src/credits', 'src/addhtml'], function(credits, addHtml) {
+define(['credits', 'addhtml', 'purchase'], function(credits, addHtml, purchase) {
 	describe("A suite", function() {
 		it("contains spec with an expectation", function() {
 			expect(true).toBe(true);
@@ -20,6 +20,13 @@ define(['src/credits', 'src/addhtml'], function(credits, addHtml) {
 			addHtml.addHtml(fixtures.find('#my-fixture'), 'test');
 
 			expect(fixtures.find('#my-fixture').html()).toBe('test');
+		});
+	});
+
+	describe("Purchase", function() {
+		it("has purchaseProduct function", function() {
+			expect(credits.purchaseProduct).toBeDefined();
+			expect(typeof credits.purchaseProduct).toBe('function');
 		});
 	});
 });
