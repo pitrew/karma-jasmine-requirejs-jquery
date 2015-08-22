@@ -16,8 +16,10 @@ define(['src/credits', 'src/addhtml'], function(credits, addHtml) {
 		it("works", function() {
 			expect($('<input type="checkbox" checked="checked"/>')).toBeChecked();	
 
-			loadFixtures('myfixture.html');
-			addHtml.addHtml('#myfixture', 'test');
+			var fixtures = setFixtures(readFixtures('myfixture.html'));
+			addHtml.addHtml(fixtures.find('#my-fixture'), 'test');
+
+			expect(fixtures.find('#my-fixture').html()).toBe('test');
 		});
 	});
 });
