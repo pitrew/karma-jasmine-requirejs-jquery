@@ -15,10 +15,16 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+	  JASMINE,
+	  JASMINE_ADAPTER,
+	  REQUIRE,
+	  REQUIRE_ADAPTER,
+
+      {pattern: 'lib/**/*.js', included: false},
+      //{pattern: 'src/**/*.js', included: false},
+      {pattern: 'test/**/*Spec.js', included: false},
+
       'test/test-main.js',
-      {pattern: 'src/*.js', included: false},
-      {pattern: 'libs/*.js', included: false},
-      {pattern: 'test/spec/*Spec.js', included: false}
     ],
 
 
