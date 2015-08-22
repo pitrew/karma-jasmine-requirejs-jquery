@@ -1,4 +1,4 @@
-var allTestFiles = [], allSrcFiles = [];
+var allTestFiles = [], allSrcFiles = {};
 var TEST_REGEXP = /(spec|test)\.js$/i;
 var SRC_REGEXP = /\.js$/i;
 var FIX_REGEXP = /fixtures/i;
@@ -13,12 +13,14 @@ Object.keys(window.__karma__.files).forEach(function(file) {
     allTestFiles.push(normalizedTestModule);
   }
   else if (SRC_REGEXP.test(file)) {
-    var normalizedSrcModule = file.replace(/^\/base\/|\.js$/g, '');
-    allSrcFiles.push(normalizedSrcModule);
+    var normalizedSrcModule = file.replace(/^.*[\\\\\/]|\.js$/g, '');
+    var normalizedSrcPath = file.replace(/^\/base\/|\.js$/g, '');
+	allSrcFiles[normalizedSrcModule] = normalizedSrcPath;
+//	console.log(normalizedSrcModule + ' -> ' + normalizedSrcPath);
   }
   else if (FIX_REGEXP.test(file)) {
     var normalizedFixModule = file.replace(/^\/base\/|\.js$/g, '');
-    allSrcFiles.push(normalizedFixModule);
+	allSrcFiles[normalizedFixModule] = normalizedFixModule;
   }
 });
 
@@ -28,7 +30,8 @@ require.config({
   // Karma serves files under /base, which is the basePath from your config file
   baseUrl: '/base',
 
-  files: allSrcFiles,
+//  files: allSrcFiles,
+  paths: allSrcFiles,
 
   // dynamically load all test files
   deps: allTestFiles,

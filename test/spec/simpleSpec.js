@@ -1,4 +1,11 @@
 define(['credits', 'addhtml', 'purchase'], function(credits, addHtml, purchase) {
+	describe("Deps", function() {
+		it("included", function() {
+//			console.log(purchase);
+			expect(purchase).toBeDefined();
+		});
+	});
+	
 	describe("A suite", function() {
 		it("contains spec with an expectation", function() {
 			expect(true).toBe(true);
@@ -25,8 +32,8 @@ define(['credits', 'addhtml', 'purchase'], function(credits, addHtml, purchase) 
 
 	describe("Purchase", function() {
 		it("has purchaseProduct function", function() {
-			expect(credits.purchaseProduct).toBeDefined();
-			expect(typeof credits.purchaseProduct).toBe('function');
+			expect(purchase.purchaseProduct).toBeDefined();
+			expect(typeof purchase.purchaseProduct).toBe('function');
 		});
 	});
 });
