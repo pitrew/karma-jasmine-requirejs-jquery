@@ -3,3 +3,11 @@ describe("A suite", function() {
 		expect(true).toBe(true);
 	});
 });
+
+describe("Fixtures", function() {
+	it("works", function() {
+		expect($('<input type="checkbox" checked="checked"/>')).toBeChecked();	
+	});
+});
+
+
